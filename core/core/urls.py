@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import home
 
 urlpatterns = [
+    path('', home, name='home'),  # This is the new home page route
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('investigations/', include('investigations.urls')),
