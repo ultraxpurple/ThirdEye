@@ -1,11 +1,8 @@
 # investigations/views.py
 from django.http import HttpResponse
+from .models import Investigation
 
 def investigation_list(request):
-    return HttpResponse("List of investigations")
-
-def start_investigation(request):
-    return HttpResponse("Start a new investigation")
-
-def investigation_detail(request, investigation_id):
-    return HttpResponse(f"Details for investigation {investigation_id}")
+    # Fetch investigations (which include report information)
+    investigations = Investigation.objects.filter(user=request.user)
+    return render(request, 'investigations/investigation_list.html', {'investigations': investigations})

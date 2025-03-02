@@ -24,5 +24,4 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('investigations/', include('investigations.urls')),
     path('contact/', include('contact.urls')),
-    path('reports/', include('reports.urls')), # if using separate app
 ]
