@@ -1,0 +1,17 @@
+<!-- users/templates/users/profile_edit.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+</head>
+<body>
+    <h2>Edit Profile</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ request.user.email }}" required><br>
+        <button type="submit">Update Profile</button>
+    </form>
+    <a href="{% url 'profile_view' %}">Back to Profile</a>
+</body>
+</html>
