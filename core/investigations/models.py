@@ -1,11 +1,13 @@
+# investigations/models.py
 from django.db import models
-from django.contrib.auth.models import User  # Using Django’s default User model
+from django.contrib.auth.models import User
 
 class Investigation(models.Model):
-    # Django automatically creates an auto-increment PK named 'id' by default.
-    # If you specifically want 'investigation_id' as the PK, you can do so, 
-    # but it's optional. We'll stick with the Django default "id".
-
+    investigation_name = models.CharField(
+        max_length=255,
+        default='Untitled Investigation',  # Default value added
+        help_text="Enter the name or title of the investigation."
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(
         max_length=20,
@@ -21,4 +23,4 @@ class Investigation(models.Model):
     report_loc = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f"Investigation #{self.id} - Status: {self.status}"
+        return f"{self.investigation_name} (Status: {self.status})"
